@@ -1,0 +1,38 @@
+{
+	"name": "@beluga/ui",
+	"description": "",
+	"version": "0.0.0",
+	"private": true,
+	"sideEffects": false,
+	"exports": {
+		".": "./src/index.tsx",
+		"./styles": "./src/styles.css"
+	},
+	"scripts": {
+		"lint": "eslint . --max-warnings 0",
+		"generate:component": "turbo gen react-component",
+		"check-types": "tsc --noEmit"
+	},
+	"devDependencies": {
+		"@beluga/design-system": "workspace:*",
+		"@beluga/typescript": "workspace:*",
+		"@beluga/utils": "workspace:*",
+		"@types/node": "^22.13.4",
+		"@types/react": "19.0.9",
+		"@types/react-dom": "19.0.3",
+		"tailwindcss": "^4.0.6",
+		"typescript": "5.7.3"
+	},
+	"dependencies": {
+		"@hookform/resolvers": "^4.1.0",
+		"@radix-ui/react-slot": "^1.1.2",
+		"@tailwindcss/postcss": "^4.0.6",
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
+		"lucide-react": "^0.475.0",
+		"postcss": "^8.5.2",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0",
+		"tailwind-merge": "^3.0.1"
+	}
+}

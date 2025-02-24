@@ -1,0 +1,21 @@
+{
+	"name": "@beluga/translations",
+	"description": "Translation package",
+	"version": "0.0.0",
+	"private": true,
+	"sideEffects": false,
+	"exports": {
+		".": "./src/index.tsx"
+	},
+	"scripts": {
+		"lint": "eslint . --max-warnings 0",
+		"check-types": "tsc --noEmit"
+	},
+	"devDependencies": {
+		"@beluga/typescript": "workspace:*",
+		"@types/node": "^22.13.4",
+		"@types/react": "19.0.9",
+		"@types/react-dom": "19.0.3",
+		"typescript": "5.7.3"
+	}
+}

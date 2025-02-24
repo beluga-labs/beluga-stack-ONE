@@ -1,0 +1,20 @@
+{
+	"users": [
+		{
+			"email": "admin@beluga.com",
+			"password": "admin"
+		}
+	],
+	"translations": {
+		"de": {
+			"HomePage": {
+				"title": "Hello!"
+			}
+		},
+		"en": {
+			"HomePage": {
+				"title": "Hello!"
+			}
+		}
+	}
+}

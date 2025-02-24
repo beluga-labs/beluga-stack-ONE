@@ -1,0 +1,43 @@
+# Ignoriere Node.js-spezifische Dateien und Ordner
+node_modules
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Turborepo-spezifisch
+/.turbo
+
+# Build-Ausgaben
+/dist
+/build
+/.next
+/out
+
+# Lokale Umgebungsdateien
+.env
+.env.*.local
+
+# Docker-spezifische Dateien (falls nicht benötigt)
+Dockerfile
+docker-compose.yml
+
+# Ignoriere alle Logs und temporären Dateien
+*.log
+*.tmp
+*.lock
+
+# Editor- und Betriebssystem-spezifische Dateien
+.DS_Store
+Thumbs.db
+.idea
+.vscode
+*.swp
+
+# Git-spezifische Dateien
+.git
+.gitignore
+
+# Tests und Konfigurationsdateien
+/coverage
+*.test.*
+*.spec.*

@@ -1,0 +1,25 @@
+{
+	"extends": "@beluga/typescript/nextjs.json",
+	"compilerOptions": {
+		"plugins": [
+			{
+				"name": "next"
+			}
+		],
+		"target": "ES2017",
+		"baseUrl": ".",
+		"paths": {
+			"@payload-config": ["./payload.config.ts"],
+			"@/*": ["./*"]
+		},
+		"jsx": "preserve"
+	},
+	"include": [
+		"**/*.ts",
+		"**/*.tsx",
+		"next-env.d.ts",
+		"next.config.mjs",
+		".next/types/**/*.ts"
+	],
+	"exclude": ["node_modules"]
+}

@@ -1,0 +1,69 @@
+{
+	"name": "beluga",
+	"version": "0.1.0",
+	"description": "Beluga Stack ONE - A modern web application stack for rapid development and deployment.",
+	"scripts": {
+		"build": "turbo build",
+		"buildLocal": "turbo buildLocal",
+		"dev": "turbo dev",
+		"lint": "turbo lint",
+		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
+		"format-watch": "onchange \"**/*.{ts,tsx,md}\" -- prettier --write --ignore-unknown {{changed}}",
+		"lint-staged": "lint-staged",
+		"payload": "cd apps/web && pnpm payload",
+		"prepare": "husky",
+		"beluga": "node beluga.mjs"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/beluga-digital/beluga-stack-ONE.git"
+	},
+	"keywords": [
+		"nextjs",
+		"typescript",
+		"prettier",
+		"husky",
+		"turbo",
+		"pnpm",
+		"stack",
+		"development",
+		"deployment",
+		"modern",
+		"rapid",
+		"beluga"
+	],
+	"bugs": {
+		"url": "https://github.com/beluga-digital/beluga-stack-ONE/issues"
+	},
+	"author": "beluga – Daniel Baumert",
+	"license": "MIT",
+	"devDependencies": {
+		"husky": "^9.1.7",
+		"lint-staged": "^15.4.3",
+		"prettier": "^3.5.1",
+		"turbo": "^2.4.2",
+		"typescript": "5.7.3",
+		"chalk": "^5.4.1",
+		"commander": "^13.1.0",
+		"inquirer": "^12.4.2"
+	},
+	"packageManager": "pnpm@9.0.0",
+	"engines": {
+		"node": "^18.20.2 || >=20.9.0"
+	},
+	"resolutions": {
+		"@types/react": "18.0.0",
+		"@types/react-dom": "18.0.0"
+	},
+	"browserslist": [
+		">0.2%",
+		"not dead",
+		"not ie <= 11",
+		"not op_mini all"
+	],
+	"lint-staged": {
+		"**/*": [
+			"pnpm format"
+		]
+	}
+}
