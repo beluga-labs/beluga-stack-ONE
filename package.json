@@ -16,7 +16,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/beluga-digital/beluga-stack-ONE.git"
+		"url": "git+https://github.com/beluga-labs/beluga-stack-ONE"
 	},
 	"keywords": [
 		"nextjs",
@@ -33,7 +33,7 @@
 		"beluga"
 	],
 	"bugs": {
-		"url": "https://github.com/beluga-digital/beluga-stack-ONE/issues"
+		"url": "https://github.com/beluga-labs/beluga-stack-ONE/issues"
 	},
 	"author": "beluga – Daniel Baumert",
 	"license": "MIT",
