@@ -25,9 +25,12 @@ program
     .description('Start development mode')
     .action(() => {
         console.log(chalk.blue('Starting development mode...'));
-        execSync('docker compose -f docker-compose.local.yaml up db-dev -d', {
-            stdio: 'inherit'
-        });
+        execSync(
+            "docker compose -f docker-compose.local.yaml up $(docker compose -f docker-compose.local.yaml config --services | grep '\-dev$') -d",
+            {
+                stdio: 'inherit'
+            }
+        );
         execSync('turbo run dev', { stdio: 'inherit' });
         console.log(chalk.green('Development mode started!'));
     });
