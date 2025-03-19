@@ -4,19 +4,16 @@
 	"type": "module",
 	"private": true,
 	"scripts": {
-		"dotenvx": "dotenvx",
-		"dev": "dotenvx run -f .env.local -- next dev",
-		"build": "dotenvx run -f .env.production -- next build",
-		"buildLocal": "dotenvx run -f .env.production.local -- next build",
-		"start": "dotenvx run -f .env.local -- next start",
-		"lint": "dotenvx run -f .env.local -- next lint --max-warnings 0",
+		"dev": "next dev --turbopack --port 3000",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint --max-warnings 0",
 		"check-types": "tsc --noEmit"
 	},
 	"dependencies": {
 		"@beluga/translations": "workspace:*",
 		"@beluga/ui": "workspace:*",
 		"@beluga/utils": "workspace:*",
-		"@dotenvx/dotenvx": "^1.36.0",
 		"@fontsource-variable/inter": "^5.1.1",
 		"@fontsource/geist-mono": "^5.1.1",
 		"@fontsource/krona-one": "^5.1.1",
