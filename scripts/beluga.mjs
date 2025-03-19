@@ -9,7 +9,7 @@ import path from 'path';
 
 const program = new Command();
 
-program.name('beluga').description('CLI for beluga stack ONE').version('2.0.0');
+program.name('beluga').description('CLI for beluga stack ONE').version('0.2.0');
 
 // Function to get available apps from /apps folder
 function getAvailableApps() {
