@@ -1,7 +1,7 @@
 services:
   db-dev:
     restart: unless-stopped
-    image: postgres:14-alpine
+    image: postgres:16-alpine
     ports:
       - '5432:5432'
     env_file: './apps/web/.env.local'
@@ -12,6 +12,19 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-
+  db:
+    restart: unless-stopped
+    image: postgres:16-alpine
+    ports:
+      - '5432:5432'
+    env_file: './apps/web/.env.production.local'
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
 volumes:
   db-dev_data:
+  db_data:
