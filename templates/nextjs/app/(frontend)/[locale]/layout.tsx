@@ -1,6 +1,5 @@
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import { getTranslations } from '@/lib/api/getTranslations';
 import { PayloadLocale, TranslationsProvider } from '@beluga/translations';
 import '@fontsource-variable/inter';
 import '@fontsource/geist-mono/400.css';
@@ -25,7 +24,7 @@ export default async function RootLayout({
 }: Args): Promise<JSX.Element> {
     const { locale = 'de' } = await paramsPromise;
 
-    const translations = await getTranslations();
+    const translations = {};
 
     return (
         <html
