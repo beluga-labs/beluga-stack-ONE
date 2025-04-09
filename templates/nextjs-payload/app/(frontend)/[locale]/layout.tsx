@@ -8,6 +8,7 @@ import '@fontsource/geist-mono/700.css';
 import '@fontsource/krona-one';
 import type { Metadata } from 'next';
 import './globals.css';
+import { ReactScan } from '@/components/ReactScan';
 
 export const metadata: Metadata = {
     title: 'beluga stack 2025',
@@ -47,6 +48,7 @@ export default async function RootLayout({
                     {children}
                     {await Footer({ locale })}
                 </TranslationsProvider>
+                <ReactScan />
             </body>
         </html>
     );
