@@ -15,4 +15,4 @@ export const ReactScan: React.FC = () => {
     }, []);
 
     return <></>;
-}
+};
