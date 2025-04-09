@@ -4,7 +4,7 @@ import { cva } from 'class-variance-authority';
 import * as React from 'react';
 import { cn } from '@beluga/utils';
 
-const headingVariants = cva('text-primary', {
+const headingVariants = cva('w-full text-zinc-900 dark:text-zinc-50', {
     variants: {
         size: {
             '4xs': 'text-xs leading-tight',
