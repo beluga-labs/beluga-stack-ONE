@@ -32,11 +32,11 @@ const LanguageSwitch: React.FC<LanguageSwitchProps> = ({
                 return (
                     <li
                         key={index}
-                        className="relative block after:content-[''] after:absolute after:-right-0 after:top-1/2 after:translate-x-1/2 after:-translate-y-1/2 after:w-0.5 after:h-[70%] after:bg-gray-400 last:after:hidden">
+                        className="relative block after:content-[''] after:absolute after:-right-0 after:top-1/2 after:translate-x-1/2 after:-translate-y-1/2 after:w-0.5 after:h-[70%] after:bg-zinc-400 last:after:hidden">
                         <Link
                             href={`/${locale.code}${sanitizedPathname}${searchParams ? '?' + searchParams : ''}`}
                             className={cn(
-                                'text-base text-gray-500 hover:text-gray-400 px-1.5 md:py-1.5',
+                                'text-base text-zinc-500 hover:text-zinc-400 px-1.5 md:py-1.5',
                                 active &&
                                     'text-primary hover:text-primary hover:pointer-events-none'
                             )}>

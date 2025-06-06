@@ -8,7 +8,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ locale }) => {
     return (
-        <header className="w-full sticky top-0 z-200 bg-white/80 backdrop-blur-lg border-b border-gray-200 py-3 md:py-5">
+        <header className="w-full sticky top-0 z-200 bg-white/80 backdrop-blur-lg border-b border-zinc-200 py-3 md:py-5">
             <Container
                 as="div"
                 spacing="none">

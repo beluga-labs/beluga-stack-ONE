@@ -8,14 +8,14 @@ import { PayloadLocale } from '@beluga/translations';
 const Footer = async ({ locale }: { locale: PayloadLocale }) => {
     const footerData: Footer = await getCachedGlobal('footer', 2, 'all')();
     return (
-        <footer className="w-full border-t border-gray-200 py-3 md:py-4">
+        <footer className="w-full border-t border-zinc-200 py-3 md:py-4">
             <Container
                 as="div"
                 spacing="none">
                 <ContainerContent className="flex flex-wrap flex-col-reverse md:flex-row items-start md:items-center md:justify-between gap-x-4 gap-y-1">
                     <Paragraph
                         size="xs"
-                        className="text-gray-400 md:text-base">
+                        className="text-zinc-400 md:text-base">
                         {footerData.copyright &&
                             parse(String(footerData.copyright[locale as any]))}
                     </Paragraph>
