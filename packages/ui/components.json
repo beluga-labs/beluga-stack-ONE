@@ -7,13 +7,13 @@
 		"config": "",
 		"css": "src/styles.css",
 		"baseColor": "gray",
-		"cssVariables": true,
+		"cssVariables": false,
 		"prefix": ""
 	},
 	"aliases": {
-		"components": "@/components",
+		"components": "@beluga/ui",
 		"utils": "@beluga/utils",
-		"ui": "@/components/ui",
+		"ui": "@/ui",
 		"lib": "@beluga/utils",
 		"hooks": "@beluga/utils"
 	},

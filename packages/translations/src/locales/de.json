@@ -1,0 +1,102 @@
+{
+	"common": {
+		"locale": "de",
+
+		"dateFormatLong": "dmy-l",
+		"dateFormat": "dmy",
+
+		"back": "Zurück",
+		"cancel": "Abbrechen",
+		"close": "Schließen",
+		"delete": "Löschen",
+		"edit": "Bearbeiten",
+		"save": "Speichern",
+		"manage": "Verwalten",
+		"create": "Erstellen"
+	},
+	"app": {
+		"settings": "Einstellungen",
+		"keyboard-shortcuts": "Tastaturkürzel",
+		"expire-date": "Ablaufdatum"
+	},
+	"language": {
+		"change-language": "Sprache ändern"
+	},
+	"theme": {
+		"change-theme": "Design ändern",
+		"light": "Hell",
+		"dark": "Dunkel",
+		"system": "System"
+	},
+	"pagination": {
+		"entries-per-page": "Einträge je Seite",
+		"page": "Seite",
+		"of": "von",
+		"first-page": "Erste Seite",
+		"previous-page": "Vorherige Seite",
+		"next-page": "Nächste Seite",
+		"last-page": "Letzte Seite"
+	},
+	"sidebar": {
+		"toggle-sidebar": "Sidebar öffnen"
+	},
+	"search": {
+		"search": "Suche",
+		"toggle-search": "Suche öffnen"
+	},
+	"auth": {
+		"sign-in": "Anmelden",
+		"sign-in-description": "Melde dich mit einem der folgenden Anbieter an.",
+		"sign-out": "Abmelden",
+		"sign-out-description": "Bist du sicher, dass du dich abmelden möchtest?",
+		"provider-github": "GitHub"
+	},
+	"user": {
+		"user": "Benutzer",
+		"name": "Name",
+		"email": "E-Mail",
+		"account": "Konto",
+		"my-account": "Mein Konto",
+		"welcome-back": "Willkommen zurück",
+		"account-info": "Kontoinformationen",
+		"account-info-description": "Hier kannst du deine Kontoinformationen einsehen."
+	},
+	"session": {
+		"sessions": "Sitzungen",
+		"session-token": "Sitzungstoken"
+	},
+	"workspace": {
+		"workspace": "Workspace",
+		"name": "Name",
+		"choose-workspace-description": "Wähle einen Workspace aus, um zu beginnen.",
+		"my-workspaces": "Meine Workspaces",
+		"current-workspace": "Aktueller Workspace",
+		"switch-workspace": "Workspace wechseln",
+		"create-workspace": "Workspace erstellen",
+		"create-new-workspace": "Neuen Workspace erstellen",
+		"create-new-workspace-description": "Erstelle einen neuen Workspace, um deine Daten zu organisieren.",
+		"no-workspaces": "Keine Workspaces vorhanden",
+		"no-workspaces-description": "Du bist noch keinem Workspace beigetreten oder hast noch keinen Workspace erstellt.",
+		"members": "Mitglieder"
+	},
+	"workspace-navigation": {
+		"dashboard": {
+			"label": "Dashboard",
+			"overview": "Übersicht",
+			"ai-insights": "AI Insights"
+		},
+		"brand-management": {
+			"label": "Brand Management",
+			"monitoring-and-perception": "Monitoring, Wahrnehmung",
+			"community-and-moderation": "Community, Moderation",
+			"content-and-campaigns": "Inhalte, Kampagnen",
+			"ai-brand-analysis": "AI Brand Analyse"
+		},
+		"creators-and-cooperations": {
+			"label": "Creators, Kooperationen",
+			"find-creators": "Creators finden",
+			"cooperations-and-campaigns": "Kooperationen und Kampagnen",
+			"competition-and-market": "Wettbewerb und Markt"
+		}
+	}
+}

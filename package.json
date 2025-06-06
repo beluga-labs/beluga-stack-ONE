@@ -1,6 +1,6 @@
 {
 	"name": "beluga",
-	"version": "0.2.1",
+	"version": "1.0.0",
 	"description": "Beluga Stack ONE - A modern web application stack for rapid development and deployment.",
 	"scripts": {
 		"build": "turbo build",
@@ -41,13 +41,13 @@
 		"chalk": "^5.4.1",
 		"commander": "^13.1.0",
 		"husky": "^9.1.7",
-		"inquirer": "^12.5.2",
-		"lint-staged": "^15.5.0",
+		"inquirer": "^12.6.3",
+		"lint-staged": "^15.5.2",
 		"prettier": "^3.5.3",
-		"turbo": "^2.5.0",
+		"turbo": "^2.5.4",
 		"typescript": "5.7.3"
 	},
-	"packageManager": "pnpm@10.4.1",
+	"packageManager": "pnpm@10.8.1",
 	"engines": {
 		"node": ">=20.9.0"
 	},
