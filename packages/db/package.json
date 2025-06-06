@@ -1,0 +1,28 @@
+{
+	"name": "@beluga/db",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"main": "./src/index.ts",
+	"scripts": {
+		"generate": "dotenvx run --env-file ../../.env.local -- drizzle-kit generate --config=./src/drizzle.config.ts",
+		"migrate": "dotenvx run --env-file ../../.env.local -- drizzle-kit migrate --config=./src/drizzle.config.ts",
+		"push": "dotenvx run --env-file ../../.env.local -- drizzle-kit push --config=./src/drizzle.config.ts",
+		"studio": "drizzle-kit studio --config=./src/drizzle.config.ts",
+		"seed:reset-db": "dotenvx run --env-file ../../.env.local -- tsx src/seeds/reset-db.ts"
+	},
+	"dependencies": {
+		"@dotenvx/dotenvx": "^1.41.0",
+		"@beluga/utils": "workspace:*",
+		"bcryptjs": "^3.0.2",
+		"drizzle-orm": "^0.42.0",
+		"pg": "^8.14.1",
+		"next-auth": "^5.0.0-beta.3"
+	},
+	"devDependencies": {
+		"@types/node": "^22.14.1",
+		"@types/pg": "^8.11.13",
+		"drizzle-kit": "^0.31.0",
+		"tsx": "^4.19.3"
+	}
+}
