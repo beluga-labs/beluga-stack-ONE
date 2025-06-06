@@ -46,7 +46,6 @@ export default async function RootLayout({
                 className={`
                 scroll-smooth w-full antialiased
                 bg-zinc-50
-                dark:bg-zinc-950
                 antialiased
                 min-w-full
                 min-h-full

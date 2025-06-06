@@ -1,9 +1,7 @@
 {
 	"name": "@beluga/ui",
-	"description": "",
 	"version": "0.0.0",
 	"private": true,
-	"sideEffects": false,
 	"exports": {
 		".": "./src/index.tsx",
 		"./styles": "./src/styles.css"
