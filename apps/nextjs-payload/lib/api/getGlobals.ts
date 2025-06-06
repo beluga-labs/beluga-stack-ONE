@@ -3,6 +3,7 @@ import type { Config } from '@/payload-types';
 import configPromise from '@payload-config';
 import { getPayload } from 'payload';
 import { unstable_cache } from 'next/cache';
+import { PayloadLocale } from '@/types/PayloadLocale';
 
 type Global = keyof Config['globals'];
 

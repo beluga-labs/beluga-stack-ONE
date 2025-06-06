@@ -1,17 +1,21 @@
-import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import { ReactScan } from '@/components/ReactScan';
+import QueryProvider from '@/context/QueryProvider';
+import ThemeProvider from '@/context/ThemeProvider';
+import ToasterProvider from '@/context/ToasterProvider';
+import TranslationsProvider from '@/context/TranslationsProvider';
+import {
+    de as deTranslations,
+    en as enTranslations
+} from '@beluga/translations';
 import { Locale } from '@beluga/translations/types';
-import { getTranslations } from '@/lib/api/getTranslations';
+import { LayoutProvider } from '@beluga/utils';
 import '@fontsource-variable/inter';
 import '@fontsource/geist-mono/400.css';
 import '@fontsource/geist-mono/700.css';
 import '@fontsource/krona-one';
-import type { Metadata } from 'next';
 import './globals.css';
-import { ReactScan } from '@/components/ReactScan';
-import { LayoutProvider } from '@beluga/utils';
-import ThemeProvider from '@/context/ThemeProvider';
-import TranslationsProvider from '@/context/TranslationsProvider';
+import { Metadata } from 'next/dist/types';
 
 export const metadata: Metadata = {
     title: 'beluga stack 2025',
@@ -29,7 +33,10 @@ export default async function RootLayout({
 }: Args): Promise<JSX.Element> {
     const { locale = 'de' } = await paramsPromise;
 
-    const translations = await getTranslations();
+    const translations = {
+        de: deTranslations,
+        en: enTranslations
+    };
 
     return (
         <html
@@ -51,13 +58,15 @@ export default async function RootLayout({
                     enableSystem
                     disableTransitionOnChange>
                     <LayoutProvider>
-                        <TranslationsProvider
-                            translations={translations}
-                            locale={locale}>
-                            <Header locale={locale} />
-                            {children}
-                            {await Footer({ locale })}
-                        </TranslationsProvider>
+                        <QueryProvider>
+                            <TranslationsProvider
+                                translations={translations}
+                                locale={locale}>
+                                <Header locale={locale} />
+                                {children}
+                                <ToasterProvider />
+                            </TranslationsProvider>
+                        </QueryProvider>
                     </LayoutProvider>
                 </ThemeProvider>
                 <ReactScan />

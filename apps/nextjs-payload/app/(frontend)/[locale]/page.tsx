@@ -1,12 +1,12 @@
 import Main from '@/components/Main';
-import { PayloadLocale } from '@beluga/translations';
-import { Container, ContainerContent, Heading, Paragraph } from '@beluga/ui';
+import { Locale } from '@beluga/translations/types';
+import { Container, ContainerContent, Heading } from '@beluga/ui';
 import Image from 'next/image';
 
 export const dynamic = 'force-dynamic';
 
 type Args = {
-    params: Promise<{ locale?: PayloadLocale }>;
+    params: Promise<{ locale?: Locale }>;
 };
 
 export default async function HomePage({

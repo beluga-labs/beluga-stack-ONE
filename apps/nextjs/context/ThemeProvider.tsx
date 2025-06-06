@@ -6,7 +6,7 @@ import {
 } from 'next-themes';
 
 interface ThemeProviderProps extends NextThemesProviderProps {
-    children: React.ReactNode[];
+    children: React.ReactNode[] | React.ReactNode;
 }
 
 const ThemeProvider = ({ children, ...props }: ThemeProviderProps) => {

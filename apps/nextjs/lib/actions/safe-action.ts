@@ -1,12 +1,12 @@
 import { createSafeActionClient } from 'next-safe-action';
 
-export const actionClient = createSafeActionClient({
-    // Can also be an async function.
-    handleServerError(e) {
-        // Log to console.
-        console.error('Action error:', e.message);
+export class ActionError extends Error {}
 
-        // Rethrow all server errors:
-        throw e;
+export const actionClient = createSafeActionClient({
+    handleServerError: (error) => {
+        if (error instanceof ActionError) {
+            return error.message;
+        }
+        return 'An unexpected error occurred';
     }
 });
