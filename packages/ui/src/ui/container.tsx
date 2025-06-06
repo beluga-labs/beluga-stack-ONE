@@ -45,7 +45,7 @@ const containerVariants = cva(
             spacingBottom: {
                 'false': '',
                 'none': 'pb-0',
-                'xs': 'ppb-4',
+                'xs': 'pb-4',
                 'sm': 'pb-8',
                 'base': 'pb-16',
                 'lg': 'pb-32',

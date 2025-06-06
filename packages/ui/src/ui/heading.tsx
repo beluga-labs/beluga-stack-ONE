@@ -4,7 +4,7 @@ import { cva } from 'class-variance-authority';
 import * as React from 'react';
 import { cn } from '@beluga/utils';
 
-const headingVariants = cva('w-full text-zinc-900 dark:text-zinc-50', {
+const headingVariants = cva('w-full', {
     variants: {
         size: {
             '4xs': 'text-xs leading-tight',
@@ -12,7 +12,7 @@ const headingVariants = cva('w-full text-zinc-900 dark:text-zinc-50', {
             '2xs': 'text-base leading-tight',
             'xs': 'text-lg leading-tight',
             'sm': 'text-xl leading-tight',
-            'base': 'text-xl md:text-2xl leading-tight',
+            'md': 'text-xl md:text-2xl leading-tight',
             'lg': 'text-2xl md:text-3xl leading-tight',
             'xl': 'text-2xl md:text-3xl xl:text-4xl leading-tight',
             '2xl': 'text-3xl md:text-4xl xl:text-5xl leading-tight',
@@ -37,14 +37,21 @@ const headingVariants = cva('w-full text-zinc-900 dark:text-zinc-50', {
         font: {
             sans: 'font-sans',
             serif: 'font-serif',
+            display: 'font-display',
             mono: 'font-mono'
+        },
+        variant: {
+            default: 'text-zinc-900 dark:text-zinc-50',
+            primary: 'text-primary-600 dark:text-primary-500',
+            muted: 'text-zinc-500 dark:text-zinc-400'
         }
     },
     defaultVariants: {
         size: 'lg',
         align: 'left',
-        weight: 'normal',
-        font: 'sans'
+        weight: 'semibold',
+        font: 'sans',
+        variant: 'default'
     }
 });
 
@@ -63,6 +70,7 @@ const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
             align,
             weight,
             font,
+            variant,
             level,
             asChild = false,
             ...props
@@ -74,7 +82,7 @@ const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
         return (
             <Comp
                 className={cn(
-                    headingVariants({ size, align, weight, font }),
+                    headingVariants({ size, align, weight, font, variant }),
                     className
                 )}
                 ref={ref}
