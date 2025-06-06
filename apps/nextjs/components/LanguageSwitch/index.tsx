@@ -1,52 +1,67 @@
 'use client';
 
 import { cn } from '@beluga/utils';
-import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { Languages } from 'lucide-react';
+import {
+    Button,
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuRadioGroup,
+    DropdownMenuRadioItem,
+    DropdownMenuTrigger
+} from '@beluga/ui';
+import { useTranslation } from 'beluga-i18n';
+import { LANGUAGES } from '@beluga/translations';
 
 interface LanguageSwitchProps {
-    locale?: string;
+    className?: string;
 }
 
-const LanguageSwitch: React.FC<LanguageSwitchProps> = ({
-    locale: currentLocale
-}) => {
+const LanguageSwitch: React.FC<LanguageSwitchProps> = ({ className }) => {
     const pathname = usePathname();
-    const searchParams = useSearchParams();
+    const router = useRouter();
+    const { t } = useTranslation();
 
-    const locales = [
-        { code: 'de', label: 'DE' },
-        { code: 'en', label: 'EN' }
-    ];
+    const getPathWithoutLocale = () => {
+        const segments = pathname.split('/');
+        if (LANGUAGES.some((lang) => lang.code === segments[1])) {
+            return '/' + segments.slice(2).join('/');
+        }
+        return pathname;
+    };
 
-    let sanitizedPathname: string | null = pathname;
-
-    if (locales.some((locale) => pathname?.startsWith('/' + locale.code))) {
-        sanitizedPathname = pathname?.slice(3) || '';
-    }
+    const currentLocale = pathname.split('/')[1];
 
     return (
-        <ul className="flex align-center">
-            {locales.map((locale, index) => {
-                const active = currentLocale === locale.code;
-                return (
-                    <li
-                        key={index}
-                        className="relative block after:content-[''] after:absolute after:-right-0 after:top-1/2 after:translate-x-1/2 after:-translate-y-1/2 after:w-0.5 after:h-[70%] after:bg-gray-400 last:after:hidden">
-                        <Link
-                            href={`/${locale.code}${sanitizedPathname}${searchParams ? '?' + searchParams : ''}`}
-                            className={cn(
-                                'text-base text-gray-500 hover:text-gray-400 px-1.5 md:py-1.5',
-                                active &&
-                                    'text-primary hover:text-primary hover:pointer-events-none'
-                            )}>
-                            {locale.label}
-                        </Link>
-                    </li>
-                );
-            })}
-        </ul>
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button
+                    variant="ghost"
+                    size="icon-xs"
+                    className={cn('', className)}
+                    aria-label={t('LanguageSwitch.toggleLanguage')}
+                    title={t('LanguageSwitch.toggleLanguage')}>
+                    <Languages className="size-4" />
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+                <DropdownMenuRadioGroup
+                    value={currentLocale}
+                    onValueChange={(value) =>
+                        router.push(`/${value}${getPathWithoutLocale()}`)
+                    }>
+                    {LANGUAGES.map((lang) => (
+                        <DropdownMenuRadioItem
+                            key={lang.code}
+                            value={lang.code}>
+                            {lang.label}
+                        </DropdownMenuRadioItem>
+                    ))}
+                </DropdownMenuRadioGroup>
+            </DropdownMenuContent>
+        </DropdownMenu>
     );
 };
 
-export default LanguageSwitch;
+export { LanguageSwitch, type LanguageSwitchProps };

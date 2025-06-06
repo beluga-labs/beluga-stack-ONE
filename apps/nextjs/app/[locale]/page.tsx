@@ -27,7 +27,7 @@ export default async function HomePage({
                         width={900}
                     />
                     <Heading
-                        className="text-primary-500"
+                        className="text-primary-500 dark:text-primary-500"
                         level={1}
                         size="xl"
                         font="serif"

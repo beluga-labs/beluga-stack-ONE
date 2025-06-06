@@ -18,7 +18,7 @@ export default function Error({
             <h2 className="text-2xl font-bold mb-4">An error occurred</h2>
             <button
                 onClick={() => reset()}
-                className="px-4 py-2 bg-blue-500 text-gray-700 rounded hover:bg-blue-600">
+                className="px-4 py-2 bg-blue-500 text-zinc-700 rounded hover:bg-blue-600">
                 Try again
             </button>
         </div>

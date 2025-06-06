@@ -16,7 +16,10 @@ const Logo: React.FC<LogoProps> = ({ className }) => {
                 height="100%"
                 viewBox="0 0 900 224"
                 version="1.1"
-                className={cn('fill-gray-700 h-6 w-auto', className)}
+                className={cn(
+                    'fill-zinc-700 dark:fill-zinc-100 h-6 w-auto',
+                    className
+                )}
                 style={{
                     fillRule: 'evenodd',
                     clipRule: 'evenodd',
