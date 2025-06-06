@@ -1,6 +1,6 @@
 {
 	"name": "beluga",
-	"version": "0.2.1",
+	"version": "1.0.0",
 	"description": "Beluga Stack ONE - A modern web application stack for rapid development and deployment.",
 	"scripts": {
 		"build": "turbo build",
