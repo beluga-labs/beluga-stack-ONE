@@ -1,35 +1,49 @@
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 import { match } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
+import { LOCALES, DEFAULT_LOCALE } from '@beluga/translations';
+import { Locale } from '@beluga/translations/types';
 
-let locales = ['de', 'en'];
-let defaultLocale = 'de';
+const locales = LOCALES;
+const defaultLocale = DEFAULT_LOCALE;
 
-function getLocale(request: any) {
-    let negotiator = new Negotiator(request);
-    let languages = negotiator.language(locales);
+function getLocale(request: NextRequest) {
+    const negotiatorHeaders: Record<string, string> = {};
+    request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
+
+    const languages = new Negotiator({
+        headers: negotiatorHeaders
+    }).languages();
     return match(languages, locales, defaultLocale);
 }
 
-export function middleware(request: any) {
-    // Check if there is any supported locale in the pathname
-    const { pathname } = request.nextUrl;
+export function middleware(request: NextRequest) {
+    const pathname = request.nextUrl.pathname;
+
+    // Check if pathname already has locale
     const pathnameHasLocale = locales.some(
-        (locale) =>
+        (locale: Locale) =>
             pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
     );
 
-    if (pathnameHasLocale) return;
+    if (pathnameHasLocale) return NextResponse.next();
 
     // Redirect if there is no locale
     const locale = getLocale(request);
     request.nextUrl.pathname = `/${locale}${pathname}`;
-    // e.g. incoming request is /products
-    // The new URL is now /en-US/products
-    return Response.redirect(request.nextUrl);
+    return NextResponse.redirect(request.nextUrl);
 }
 
 export const config = {
     matcher: [
-        '/((?!api|_next/static|_next/image|admin|assets|public|images|videos|favicon.ico|icon.png|icon.svg|apple-icon.png|manifest.json|sw.js).*)'
+        /*
+         * Match all request paths except for the ones starting with:
+         * - _next/static (static files)
+         * - _next/image (image optimization files)
+         * - favicon.ico (favicon file)
+         * - public folder
+         */
+        '/((?!_next/static|_next/image|api/|admin/|assets/|public/|images/|videos/|favicon.ico|icon.png|icon.svg|apple-icon.png|manifest.json|sw.js).*)'
     ]
 };

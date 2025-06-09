@@ -1,5 +1,5 @@
 {
-	"extends": "@beluga/typescript/base.json",
+	"extends": "@beluga/typescript/react-library.json",
 	"include": ["."],
 	"exclude": ["dist", "build", "node_modules"],
 	"compilerOptions": {

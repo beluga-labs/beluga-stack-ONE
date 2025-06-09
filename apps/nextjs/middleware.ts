@@ -2,9 +2,11 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { match } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
+import { LOCALES, DEFAULT_LOCALE } from '@beluga/translations';
+import { Locale } from '@beluga/translations/types';
 
-const locales = ['de', 'en'] as const;
-const defaultLocale = 'de';
+const locales = LOCALES;
+const defaultLocale = DEFAULT_LOCALE;
 
 function getLocale(request: NextRequest) {
     const negotiatorHeaders: Record<string, string> = {};
@@ -21,7 +23,7 @@ export function middleware(request: NextRequest) {
 
     // Check if pathname already has locale
     const pathnameHasLocale = locales.some(
-        (locale) =>
+        (locale: Locale) =>
             pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
     );
 
@@ -42,6 +44,6 @@ export const config = {
          * - favicon.ico (favicon file)
          * - public folder
          */
-        '/((?!api|_next/static|_next/image|admin|assets|public|images|videos|favicon.ico|icon.png|icon.svg|apple-icon.png|manifest.json|sw.js).*)'
+        '/((?!_next/static|_next/image|favicon.ico|public/|api).*)'
     ]
 };
