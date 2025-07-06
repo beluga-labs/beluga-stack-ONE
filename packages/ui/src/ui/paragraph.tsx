@@ -7,6 +7,7 @@ import { cn } from '@beluga/utils';
 const paragraphVariants = cva('w-full leading-tight', {
     variants: {
         size: {
+            '4xs': 'text-3xs',
             '3xs': 'text-2xs',
             '2xs': 'text-xs',
             'xs': 'text-sm',
@@ -42,6 +43,9 @@ const paragraphVariants = cva('w-full leading-tight', {
         variant: {
             default: 'text-zinc-900 dark:text-zinc-50',
             primary: 'text-primary-600 dark:text-primary-500',
+            primaryMuted: 'text-primary-500 dark:text-primary-700',
+            destructive: 'text-red-600 dark:text-red-500',
+            destructiveMuted: 'text-red-500 dark:text-red-700',
             muted: 'text-zinc-500 dark:text-zinc-400'
         }
     },
