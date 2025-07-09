@@ -1,99 +1,91 @@
-import { relations } from 'drizzle-orm';
-import {
-    boolean,
-    timestamp,
-    pgTable,
-    text,
-    primaryKey,
-    integer
-} from 'drizzle-orm/pg-core';
-import type { AdapterAccountType } from 'next-auth/adapters';
+import { InferInsertModel, InferSelectModel, relations } from 'drizzle-orm';
+import { boolean, pgTable, text, timestamp } from 'drizzle-orm/pg-core';
 import { usersToWorkspaces } from './users-to-workspaces';
 
-export const users = pgTable('user', {
-    id: text('id')
-        .primaryKey()
-        .$defaultFn(() => crypto.randomUUID()),
-    name: text('name'),
-    email: text('email').unique(),
-    emailVerified: timestamp('emailVerified', { mode: 'date' }),
+export const users = pgTable('users', {
+    id: text('id').primaryKey(),
+    name: text('name').notNull(),
+    email: text('email').notNull().unique(),
+    emailVerified: boolean('email_verified')
+        .$defaultFn(() => false)
+        .notNull(),
     image: text('image'),
-    hashedPassword: text('hashedPassword')
+    createdAt: timestamp('created_at')
+        .$defaultFn(() => /* @__PURE__ */ new Date())
+        .notNull(),
+    updatedAt: timestamp('updated_at')
+        .$defaultFn(() => /* @__PURE__ */ new Date())
+        .notNull()
 });
 
 export const usersRelations = relations(users, ({ many }) => ({
     workspaces: many(usersToWorkspaces)
 }));
 
-export const accounts = pgTable(
-    'account',
-    {
-        userId: text('userId')
-            .notNull()
-            .references(() => users.id, { onDelete: 'cascade' }),
-        type: text('type').$type<AdapterAccountType>().notNull(),
-        provider: text('provider').notNull(),
-        providerAccountId: text('providerAccountId').notNull(),
-        refresh_token: text('refresh_token'),
-        access_token: text('access_token'),
-        expires_at: integer('expires_at'),
-        token_type: text('token_type'),
-        scope: text('scope'),
-        id_token: text('id_token'),
-        session_state: text('session_state')
-    },
-    (account) => [
-        {
-            compoundKey: primaryKey({
-                columns: [account.provider, account.providerAccountId]
-            })
-        }
-    ]
-);
-
-export const sessions = pgTable('session', {
-    sessionToken: text('sessionToken').primaryKey(),
-    userId: text('userId')
+export const sessions = pgTable('sessions', {
+    id: text('id').primaryKey(),
+    expiresAt: timestamp('expires_at').notNull(),
+    token: text('token').notNull().unique(),
+    createdAt: timestamp('created_at').notNull(),
+    updatedAt: timestamp('updated_at').notNull(),
+    ipAddress: text('ip_address'),
+    userAgent: text('user_agent'),
+    userId: text('user_id')
         .notNull()
-        .references(() => users.id, { onDelete: 'cascade' }),
-    expires: timestamp('expires', { mode: 'date' }).notNull()
+        .references(() => users.id, { onDelete: 'cascade' })
 });
 
-export const verificationTokens = pgTable(
-    'verificationToken',
-    {
-        identifier: text('identifier').notNull(),
-        token: text('token').notNull(),
-        expires: timestamp('expires', { mode: 'date' }).notNull()
-    },
-    (verificationToken) => [
-        {
-            compositePk: primaryKey({
-                columns: [verificationToken.identifier, verificationToken.token]
-            })
-        }
-    ]
-);
+export const accounts = pgTable('accounts', {
+    id: text('id').primaryKey(),
+    accountId: text('account_id').notNull(),
+    providerId: text('provider_id').notNull(),
+    userId: text('user_id')
+        .notNull()
+        .references(() => users.id, { onDelete: 'cascade' }),
+    accessToken: text('access_token'),
+    refreshToken: text('refresh_token'),
+    idToken: text('id_token'),
+    accessTokenExpiresAt: timestamp('access_token_expires_at'),
+    refreshTokenExpiresAt: timestamp('refresh_token_expires_at'),
+    scope: text('scope'),
+    password: text('password'),
+    createdAt: timestamp('created_at').notNull(),
+    updatedAt: timestamp('updated_at').notNull()
+});
 
-export const authenticators = pgTable(
-    'authenticator',
-    {
-        credentialID: text('credentialID').notNull().unique(),
-        userId: text('userId')
-            .notNull()
-            .references(() => users.id, { onDelete: 'cascade' }),
-        providerAccountId: text('providerAccountId').notNull(),
-        credentialPublicKey: text('credentialPublicKey').notNull(),
-        counter: integer('counter').notNull(),
-        credentialDeviceType: text('credentialDeviceType').notNull(),
-        credentialBackedUp: boolean('credentialBackedUp').notNull(),
-        transports: text('transports')
-    },
-    (authenticator) => [
-        {
-            compositePK: primaryKey({
-                columns: [authenticator.userId, authenticator.credentialID]
-            })
-        }
-    ]
-);
+export const verifications = pgTable('verifications', {
+    id: text('id').primaryKey(),
+    identifier: text('identifier').notNull(),
+    value: text('value').notNull(),
+    expiresAt: timestamp('expires_at').notNull(),
+    createdAt: timestamp('created_at').$defaultFn(
+        () => /* @__PURE__ */ new Date()
+    ),
+    updatedAt: timestamp('updated_at').$defaultFn(
+        () => /* @__PURE__ */ new Date()
+    )
+});
+
+export type SelectUser = InferSelectModel<typeof users>;
+export type InsertUser = InferInsertModel<typeof users>;
+
+export type UserColumns = {
+    [K in keyof SelectUser]?: boolean;
+};
+
+export type UserQueryResult = Partial<SelectUser>;
+
+export type SelectSession = InferSelectModel<typeof sessions>;
+export type InsertSession = InferInsertModel<typeof sessions>;
+
+export type SessionColumns = {
+    [K in keyof SelectSession]?: boolean;
+};
+
+export type SessionQueryResult = Partial<SelectSession>;
+
+export type SelectAccount = InferSelectModel<typeof accounts>;
+export type InsertAccount = InferInsertModel<typeof accounts>;
+
+export type SelectVerification = InferSelectModel<typeof verifications>;
+export type InsertVerification = InferInsertModel<typeof verifications>;

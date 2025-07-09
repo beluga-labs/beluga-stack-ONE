@@ -10,7 +10,7 @@
 		"@beluga/db": "workspace:*",
 		"@beluga/utils": "workspace:*",
 		"bcryptjs": "^3.0.2",
-		"next-auth": "5.0.0-beta.28"
+		"better-auth": "^1.2.12"
 	},
 	"devDependencies": {
 		"typescript": "^5.8.3"

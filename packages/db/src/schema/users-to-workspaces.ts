@@ -1,23 +1,31 @@
-import { sql } from 'drizzle-orm';
-import { pgTable, text, timestamp } from 'drizzle-orm/pg-core';
-import { relations } from 'drizzle-orm';
+import { InferInsertModel, InferSelectModel, relations } from 'drizzle-orm';
+import {
+    pgTable,
+    primaryKey,
+    text,
+    timestamp,
+    uuid
+} from 'drizzle-orm/pg-core';
 import { users } from './auth';
-import { workspaces } from './workspace';
+import { workspaces } from './workspaces';
 
-export const usersToWorkspaces = pgTable('user_to_workspace', {
-    workspaceId: text('workspace_id')
-        .notNull()
-        .references(() => workspaces.id, { onDelete: 'cascade' }),
-    userId: text('user_id')
-        .notNull()
-        .references(() => users.id, { onDelete: 'cascade' }),
-    createdAt: timestamp('created_at', { withTimezone: true })
-        .defaultNow()
-        .notNull(),
-    updatedAt: timestamp('updated_at', { withTimezone: true })
-        .defaultNow()
-        .notNull()
-});
+export const usersToWorkspaces = pgTable(
+    'users_to_workspaces',
+    {
+        workspaceId: uuid('workspace_id')
+            .notNull()
+            .references(() => workspaces.id, { onDelete: 'cascade' }),
+
+        userId: text('user_id')
+            .notNull()
+            .references(() => users.id, { onDelete: 'cascade' }),
+
+        assignedAt: timestamp('assigned_at', { withTimezone: true })
+            .defaultNow()
+            .notNull()
+    },
+    (table) => [primaryKey({ columns: [table.userId, table.workspaceId] })]
+);
 
 export const usersToWorkspacesRelations = relations(
     usersToWorkspaces,
@@ -32,3 +40,6 @@ export const usersToWorkspacesRelations = relations(
         })
     })
 );
+
+export type SelectUserToWorkspace = InferSelectModel<typeof usersToWorkspaces>;
+export type InsertUserToWorkspace = InferInsertModel<typeof usersToWorkspaces>;

@@ -1,7 +1,7 @@
 import { WorkspaceCreateInput } from '@/lib/zod/workspace';
 import { db } from '../index';
 import { usersToWorkspaces } from '../schema/users-to-workspaces';
-import { workspaces } from '../schema/workspace';
+import { workspaces } from '../schema/workspaces';
 
 export async function selectWorkspaceById(id: string) {
     return db.query.workspaces.findFirst({

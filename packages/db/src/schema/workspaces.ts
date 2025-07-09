@@ -2,7 +2,7 @@ import { relations, sql } from 'drizzle-orm';
 import { pgTable, text, timestamp } from 'drizzle-orm/pg-core';
 import { usersToWorkspaces } from './users-to-workspaces';
 
-export const workspaces = pgTable('workspace', {
+export const workspaces = pgTable('workspaces', {
     id: text('id')
         .primaryKey()
         .notNull()

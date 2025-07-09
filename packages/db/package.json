@@ -14,9 +14,7 @@
 	"dependencies": {
 		"@beluga/utils": "workspace:*",
 		"@dotenvx/dotenvx": "^1.47.1",
-		"bcryptjs": "^3.0.2",
 		"drizzle-orm": "^0.44.2",
-		"next-auth": "5.0.0-beta.29",
 		"pg": "^8.16.3"
 	},
 	"devDependencies": {
