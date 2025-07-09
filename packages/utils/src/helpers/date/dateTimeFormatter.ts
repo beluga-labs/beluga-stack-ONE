@@ -1,4 +1,4 @@
-import { Locale } from '@beluga/translations';
+import { Locale } from '@beluga/translations/types';
 import { format, Locale as DateFnsLocale } from 'date-fns';
 import { de, enUS } from 'date-fns/locale';
 
