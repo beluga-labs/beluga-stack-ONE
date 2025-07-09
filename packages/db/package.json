@@ -12,17 +12,17 @@
 		"seed:reset-db": "dotenvx run --env-file ../../.env.local -- tsx src/seeds/reset-db.ts"
 	},
 	"dependencies": {
-		"@dotenvx/dotenvx": "^1.41.0",
 		"@beluga/utils": "workspace:*",
+		"@dotenvx/dotenvx": "^1.47.1",
 		"bcryptjs": "^3.0.2",
-		"drizzle-orm": "^0.42.0",
-		"pg": "^8.14.1",
-		"next-auth": "^5.0.0-beta.3"
+		"drizzle-orm": "^0.44.2",
+		"next-auth": "5.0.0-beta.29",
+		"pg": "^8.16.3"
 	},
 	"devDependencies": {
-		"@types/node": "^22.14.1",
-		"@types/pg": "^8.11.13",
-		"drizzle-kit": "^0.31.0",
-		"tsx": "^4.19.3"
+		"@types/node": "^24.0.12",
+		"@types/pg": "^8.15.4",
+		"drizzle-kit": "^0.31.4",
+		"tsx": "^4.20.3"
 	}
 }
