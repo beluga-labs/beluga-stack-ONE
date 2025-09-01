@@ -1,5 +1,5 @@
 {
-	"extends": "@lngnr/typescript/base.json",
+	"extends": "@beluga/typescript/base.json",
 	"include": ["."],
 	"exclude": ["dist", "build", "node_modules"],
 	"compilerOptions": {
