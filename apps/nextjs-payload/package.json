@@ -8,7 +8,7 @@
 		"build": "dotenvx run --env-file ../../.env.local -- next build",
 		"start": "dotenvx run --env-file ../../.env.local -- next start",
 		"payload": "dotenvx run --env-file ../../.env.local -- payload",
-		"migrate": "dotenvx run --env-file ../../.env.local -- payload migrate:create && payload migrate",
+		"migrate": "dotenvx run --env-file ../../.env.local -- payload migrate:create && dotenvx run --env-file ../../.env.local -- payload migrate",
 		"generate": "run-p generate:importmap generate:types",
 		"generate:importmap": "dotenvx run --env-file ../../.env.local -- payload generate:importmap",
 		"generate:types": "dotenvx run --env-file ../../.env.local -- payload generate:types",
