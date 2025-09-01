@@ -3,6 +3,8 @@ export const getAppUrl = (): string =>
 
 export const getDatabaseUrl = (): string => process.env.DATABASE_URL ?? '';
 
+export const getPayloadSecret = (): string => process.env.PAYLOAD_SECRET ?? '';
+
 export const getGitHubClientId = (): string =>
     process.env.GITHUB_CLIENT_ID ?? '';
 export const getGitHubClientSecret = (): string =>
