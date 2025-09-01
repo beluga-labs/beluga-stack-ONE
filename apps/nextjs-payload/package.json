@@ -22,6 +22,7 @@
 		"@beluga/translations": "workspace:*",
 		"@beluga/ui": "workspace:*",
 		"@beluga/utils": "workspace:*",
+		"@dotenvx/dotenvx": "^1.47.1",
 		"@fontsource-variable/inter": "^5.2.6",
 		"@fontsource/geist-mono": "^5.2.6",
 		"@fontsource/krona-one": "^5.2.6",
