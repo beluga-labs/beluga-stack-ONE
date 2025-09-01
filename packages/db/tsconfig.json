@@ -1,0 +1,13 @@
+{
+	"extends": "@lngnr/typescript/base.json",
+	"include": ["."],
+	"exclude": ["dist", "build", "node_modules"],
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src"]
+		},
+		"skipLibCheck": true,
+		"noEmit": true
+	}
+}

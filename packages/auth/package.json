@@ -13,6 +13,7 @@
 		"better-auth": "^1.2.12"
 	},
 	"devDependencies": {
+		"@beluga/typescript": "workspace:*",
 		"typescript": "^5.8.3"
 	}
 }
