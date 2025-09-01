@@ -1,31 +1,17 @@
-import { match } from '@formatjs/intl-localematcher';
-import Negotiator from 'negotiator';
+import { domainRouter } from '@/lib/middleware/domainRouter';
+import { i18nRouter } from '@/lib/middleware/i18nRouter';
+import { NextRequest } from 'next/server';
 
-let locales = ['de', 'en'];
-let defaultLocale = 'de';
+export async function middleware(request: NextRequest) {
+    const i18nRedirectResponse = i18nRouter(request);
 
-function getLocale(request: any) {
-    let negotiator = new Negotiator(request);
-    let languages = negotiator.language(locales);
-    return match(languages, locales, defaultLocale);
-}
+    if (i18nRedirectResponse) {
+        return i18nRedirectResponse;
+    }
 
-export function middleware(request: any) {
-    // Check if there is any supported locale in the pathname
-    const { pathname } = request.nextUrl;
-    const pathnameHasLocale = locales.some(
-        (locale) =>
-            pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-    );
+    const domainRewriteResponse = domainRouter(request);
 
-    if (pathnameHasLocale) return;
-
-    // Redirect if there is no locale
-    const locale = getLocale(request);
-    request.nextUrl.pathname = `/${locale}${pathname}`;
-    // e.g. incoming request is /products
-    // The new URL is now /en-US/products
-    return Response.redirect(request.nextUrl);
+    return domainRewriteResponse;
 }
 
 export const config = {

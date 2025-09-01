@@ -18,6 +18,11 @@
     --font-serif: 'Krona One', 'ui-serif', 'system-ui';
     --font-mono: 'Geist Mono', 'ui-mono', 'system-ui';
 
+    --text-2xs: 0.625rem;
+    --text-2xs--line-height: 0.875rem;
+    --text-3xs: 0.5rem;
+    --text-3xs--line-height: 0.75rem;
+
     --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
     --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
 

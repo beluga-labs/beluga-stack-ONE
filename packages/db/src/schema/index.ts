@@ -1,3 +1,3 @@
 export * from './auth';
-export * from './workspace';
+export * from './workspaces';
 export * from './users-to-workspaces';
